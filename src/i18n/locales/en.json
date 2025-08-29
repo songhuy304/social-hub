@@ -1,0 +1,81 @@
+{
+  "Root": {
+    "home": "Home",
+    "about": "About",
+    "contact": "Contact",
+    "signIn": "Login",
+    "signUp": "Sign Up",
+    "resetPassword": "Reset Password",
+    "Logout": "Logout",
+    "close": "Close"
+  },
+  "Common": {
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "resetPassword": "Reset Password",
+    "logout": "Logout",
+    "close": "Close",
+    "github": "GitHub",
+    "google": "Google",
+    "twitter": "Twitter"
+  },
+
+  "Fields": {
+    "email": {
+      "label": "Email",
+      "placeholder": "Enter your email"
+    },
+    "password": {
+      "label": "Password",
+      "placeholder": "Enter your password"
+    },
+    "confirmPassword": {
+      "label": "Confirm Password",
+      "placeholder": "Confirm your password"
+    }
+  },
+
+  "errorMessage": {
+    "required": "Please enter the {{field}}",
+    "email": "Please enter a valid email address",
+    "minLength": "Please enter at least {{length}} characters",
+    "notOnlySpace": "{{field}} cannot be only spaces",
+    "password": {
+      "uppercase": "Password must contain at least one uppercase letter.",
+      "lowercase": "Password must contain at least one lowercase letter.",
+      "number": "Password must contain at least one number.",
+      "mismatch": "Passwords do not match."
+    },
+    "invalidCredentials": "Invalid email or password"
+  },
+
+  "Login": {
+    "title": "Welcome back",
+    "subtitle": "Enter your credentials to access your account",
+    "email": "Email",
+    "emailPlaceholder": "Enter your email",
+    "password": "Password",
+    "passwordPlaceholder": "Enter your password",
+    "signIn": "Sign In",
+    "signingIn": "Signing In...",
+    "noAccount": "Don't have an account?"
+  },
+
+  "Register": {
+    "title": "Create your account",
+    "subtitle": "Join our community today",
+    "firstName": "First Name",
+    "firstNamePlaceholder": "Enter your first name",
+    "lastName": "Last Name",
+    "lastNamePlaceholder": "Enter your last name",
+    "email": "Email",
+    "emailPlaceholder": "Enter your email",
+    "password": "Password",
+    "passwordPlaceholder": "Create a password",
+    "confirmPassword": "Confirm Password",
+    "confirmPasswordPlaceholder": "Confirm your password",
+    "signUp": "Sign Up",
+    "signingUp": "Signing Up...",
+    "haveAccount": "Already have an account?"
+  }
+}

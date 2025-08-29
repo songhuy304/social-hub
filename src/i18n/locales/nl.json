@@ -1,0 +1,23 @@
+{
+  "HomePage": {
+    "title": "Hallo wereld!",
+    "about": "Ga naar de over pagina",
+    "title-section": "Stablecoins, Hervonden met Vastgoed voor de hospitality industrie"
+  },
+  "LoginForm": {
+    "title": "Welkom terug",
+    "subtitle": "Voer uw inloggegevens in om toegang te krijgen tot uw account",
+    "email": "E-mail",
+    "emailPlaceholder": "Voer uw e-mailadres in",
+    "password": "Wachtwoord",
+    "passwordPlaceholder": "Voer uw wachtwoord in",
+    "signIn": "Inloggen",
+    "signingIn": "Bezig met inloggen...",
+    "noAccount": "Heeft u geen account?",
+    "socialLogin": {
+      "github": "GitHub",
+      "google": "Google",
+      "twitter": "Twitter"
+    }
+  }
+}
