@@ -1,14 +1,18 @@
 "use client";
 
-import Header from "@/components/layout/header";
+import React from "react";
+import Header from "./header";
 
-const MainLayout = ({ children }: { children: React.ReactNode }) => {
+interface MainLayoutProps {
+  children?: React.ReactNode;
+}
+
+export default function MainLayout({ children }: MainLayoutProps) {
   return (
-    <div className="min-h-dvh w-full">
+    <div className="bg-gray-100 min-h-svh w-full flex flex-col">
       <Header />
-      <main className="mx-auto max-w-7xl px-4 py-6">{children}</main>
+
+      <main className="flex-1 px-6 xl:px-12 pt-6">{children}</main>
     </div>
   );
-};
-
-export default MainLayout;
+}

@@ -14,3 +14,4 @@ export * from "./popover";
 export * from "./user-dropdown/";
 export * from "./avatar";
 export * from "./dropdown-menu";
+export * from "./card";

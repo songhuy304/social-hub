@@ -1,16 +1,16 @@
 "use client";
 
-import React, { useState } from "react";
+import { Flex } from "@/components/ui";
+import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { Button } from "@/components/ui/button";
-import { Search, X, Clock, Plus, FileText, Layers } from "lucide-react";
 import { useSearchBox } from "@/shared/hooks";
-import { Flex } from "@/components/ui";
+import { Clock, Search, X } from "lucide-react";
+import React, { useState } from "react";
 
 const SearchBox = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -41,8 +41,8 @@ const SearchBox = () => {
   };
 
   return (
-    <div className="w-full max-w-md mx-auto">
-      <Popover open={true}>
+    <div className="w-full max-w-md">
+      <Popover open={isOpen} onOpenChange={setIsOpen}>
         <PopoverTrigger asChild>
           <div className="relative">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
@@ -50,15 +50,21 @@ const SearchBox = () => {
               type="text"
               placeholder="Search..."
               value={query}
-              onChange={(e) => setQuery(e.target.value)}
+              onChange={(e) => {
+                setQuery(e.target.value);
+                setIsOpen(true);
+              }}
               onKeyDown={handleKeyDown}
               className="pl-10 pr-4 py-2 w-full"
               onFocus={() => setIsOpen(true)}
-              onBlur={() => setIsOpen(false)}
             />
           </div>
         </PopoverTrigger>
-        <PopoverContent className="w-96 p-0" align="start">
+        <PopoverContent
+          className="w-96 p-0"
+          align="start"
+          onOpenAutoFocus={(e) => e.preventDefault()}
+        >
           <div className="p-4 border-b">
             <Flex justify="between" align="center">
               <h3 className="font-semibold text-sm text-gray-500">

@@ -14,22 +14,23 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
   return (
     <header
       className={cn(
-        "fixed top-0 z-header h-navbar w-screen gap-x-6 border-b bg-white px-6 shadow-1 flex items-center xl:gap-x-12 xl:px-12",
+        "bg-background sticky top-0 z-50 border-b h-navbar xl:px-12 px-6",
         className
       )}
     >
-      <Link href="/" className="">
-        <span className="text-2xl font-bold">SocialHub</span>
-      </Link>
+      <div className="container grid grid-cols-[1fr_550px_1fr] xl:gap-x-12 gap-x-6 items-center h-full">
+        <Link href="/">
+          <span className="text-2xl font-bold">SocialHub</span>
+        </Link>
 
-      <div className="h-full min-w-layout-main-pane max-w-layout-main-pane grow gap-x-6 flex items-center">
-        <nav className="flex h-full items-end"></nav>
-        <div className="flex h-fit w-full">
+        <div>
           <SearchBox />
         </div>
-      </div>
 
-      <UserDropdown />
+        <div className="flex justify-end">
+          <UserDropdown />
+        </div>
+      </div>
     </header>
   );
 };

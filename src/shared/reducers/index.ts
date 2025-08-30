@@ -1,18 +1,20 @@
-import { authenticationReducer } from "@/shared/reducers/states/authentication";
 import { AppDispatch } from "@/shared/reducers/store";
-import { authenticationApi } from "./apis/authentication";
+import { authenticationApi, postApi } from "@/shared/reducers/apis";
+import { authenticationReducer } from "@/shared/reducers/states";
 
 export const sharedReducers = {
   authentication: authenticationReducer,
   [authenticationApi.reducerPath]: authenticationApi.reducer,
+  [postApi.reducerPath]: postApi.reducer,
 };
 
-export const middlewares = [authenticationApi.middleware];
+export const middlewares = [authenticationApi.middleware, postApi.middleware];
 
 export const api = {
   util: {
     resetApiState: () => (dispatch: AppDispatch) => {
       dispatch(authenticationApi.util.resetApiState());
+      dispatch(postApi.util.resetApiState());
     },
   },
 };
