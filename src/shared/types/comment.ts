@@ -1,11 +1,11 @@
-
 export interface Comment {
-    id: string;
-    author: string;
-    content: string;
-    timestamp: string;
-    isVerified?: boolean;
-    likes: number;
-    isLiked: boolean;
-  }
-  
+  body: string;
+  id: number;
+  likes: number;
+  postId: number;
+  user: {
+    id: number;
+    username: string;
+    fullName: string;
+  };
+}

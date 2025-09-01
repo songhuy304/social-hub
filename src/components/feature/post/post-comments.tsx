@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
 import { Avatar, AvatarFallback, Button, Textarea } from "@/components/ui";
 import { Comment } from "@/shared/types";
-import { ImageIcon, Send, Smile, User } from "lucide-react";
+import { ImageIcon, Send, Smile } from "lucide-react";
+import { useState } from "react";
 
 interface PostCommentsProps {
   comments: Comment[];
@@ -27,7 +27,6 @@ export function PostComments({
 
   return (
     <div className="px-4 pb-4 space-y-4">
-      {/* Comment Input */}
       <div className="border-t border-gray-100 pt-4">
         <div className="flex space-x-3">
           <Avatar className="w-8 h-8">
@@ -64,35 +63,26 @@ export function PostComments({
         </div>
       </div>
 
-      {/* Comments List */}
       <div className="space-y-3">
         {comments.map((comment) => (
           <div key={comment.id} className="flex space-x-3">
             <Avatar className="w-10 h-10">
-              <AvatarFallback className="bg-gray-300 text-gray-600 text-sm">
-                {comment.author.charAt(0)}
+              <AvatarFallback className="bg-gray-300 text-gray-600 text-sm uppercase">
+                {comment.user.username.charAt(0)}
               </AvatarFallback>
             </Avatar>
             <div className="flex-1">
               <div className="bg-gray-50 rounded-2xl px-4 py-3">
                 <div className="flex items-center space-x-2 mb-1">
                   <p className="font-semibold text-sm text-gray-900">
-                    {comment.author}
+                    {comment.user.username}
                   </p>
-                  {comment.isVerified && (
-                    <div className="w-4 h-4 text-blue-500">
-                      <User className="w-4 h-4" />
-                    </div>
-                  )}
-                  <span className="text-xs text-gray-500">
-                    {comment.timestamp}
-                  </span>
                 </div>
-                <p className="text-sm text-gray-700">{comment.content}</p>
+                <p className="text-sm text-gray-700">{comment.body}</p>
               </div>
               <div className="flex items-center space-x-4 mt-2 ml-2">
                 <button
-                  onClick={() => onCommentLike(comment.id)}
+                  onClick={() => onCommentLike(comment.id.toString())}
                   className="flex items-center space-x-1 text-xs text-gray-500 hover:text-blue-600"
                 >
                   <span>Like</span>
@@ -100,9 +90,7 @@ export function PostComments({
                 <div className="flex items-center space-x-1">
                   <span className="text-lg">👍</span>
                   <span className="text-lg">❤️</span>
-                  <span className="text-xs text-gray-500">
-                    {comment.likes}
-                  </span>
+                  <span className="text-xs text-gray-500">{comment.likes}</span>
                 </div>
                 <button className="text-xs text-gray-500 hover:text-blue-600">
                   Reply

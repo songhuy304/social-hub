@@ -1,16 +1,22 @@
 "use client";
 
-import React from "react";
-import { useGetPostsQuery } from "@/shared/reducers";
 import { PostCard } from "@/components/feature";
+import { usePostsWithCommentsAndUser } from "@/shared/hooks/queries/usePosts";
 
 const ListPost = () => {
-  const { data: posts } = useGetPostsQuery({ limit: 10, skip: 0 });
+  const { data: posts } = usePostsWithCommentsAndUser({ limit: 10, skip: 0 });
+
+  console.log("posts", posts);
 
   return (
     <div className="space-y-6">
-      {posts?.getData().map((post) => (
-        <PostCard key={post.id} post={post} />
+      {posts?.posts.map((post) => (
+        <PostCard
+          key={post.id}
+          post={post}
+          user={post.user}
+          comments={post.comments}
+        />
       ))}
     </div>
   );

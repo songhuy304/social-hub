@@ -1,4 +1,5 @@
 import { Comment } from "@/shared/types/comment";
+import { TUser } from "@/shared/types/user";
 
 export interface Post {
   id: number;
@@ -16,6 +17,7 @@ export interface Post {
 export interface PostCardProps {
   post: Post;
   comments?: Comment[];
+  user?: TUser;
   onLike?: (postId: number) => void;
   onCommentLike?: (commentId: string) => void;
   onAddComment?: (content: string) => void;

@@ -1,12 +1,10 @@
 import { configureStore, ThunkAction, UnknownAction } from "@reduxjs/toolkit";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 
-import { middlewares, sharedReducers } from "@/shared/reducers";
+import { sharedReducers } from "@/shared/reducers";
 
 const store = configureStore({
   reducer: sharedReducers,
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({ serializableCheck: false }).concat([...middlewares]),
 });
 
 const getStore = () => store;

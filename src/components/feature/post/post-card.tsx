@@ -2,19 +2,14 @@
 
 import { useState } from "react";
 
-import {
-  Avatar,
-  AvatarFallback,
-  Badge,
-  Button,
-  Card,
-} from "@/components/ui";
+import { Avatar, AvatarFallback, Badge, Button, Card } from "@/components/ui";
 import { Comment, PostCardProps } from "@/shared/types";
 import { MoreHorizontal, User } from "lucide-react";
 import { PostReactions } from "./post-reactions";
 import { PostComments } from "./post-comments";
 
 export function PostCard({
+  user,
   post,
   comments: initialComments = [],
   onLike,
@@ -33,21 +28,7 @@ export function PostCard({
     onLike?.(post.id);
   };
 
-  const handleCommentLike = (commentId: string) => {
-    const updatedComments = comments.map((comment) =>
-      comment.id === commentId
-        ? {
-            ...comment,
-            isLiked: !comment.isLiked,
-            likes: comment.isLiked ? comment.likes - 1 : comment.likes + 1,
-          }
-        : comment
-    );
-    setComments(updatedComments);
-    onCommentLike?.(commentId);
-  };
-
-
+  const handleCommentLike = (commentId: string) => {};
 
   const handleShare = () => {
     onShare?.(post.id);
@@ -55,15 +36,6 @@ export function PostCard({
 
   const handleDonate = () => {
     onDonate?.(post.id);
-  };
-
-  const getInitials = (name: string) => {
-    return name
-      .split(" ")
-      .map((n) => n[0])
-      .join("")
-      .toUpperCase()
-      .slice(0, 3);
   };
 
   return (
@@ -81,7 +53,7 @@ export function PostCard({
           <div>
             <div className="flex items-center space-x-2">
               <h3 className="font-semibold text-gray-900">
-                User {post.userId}
+                {user?.firstName} {user?.lastName}
               </h3>
             </div>
             <p className="text-sm text-gray-500">
@@ -124,22 +96,10 @@ export function PostCard({
         onDonate={handleDonate}
       />
 
-      {/* Comments Section */}
       {showComments && (
         <PostComments
           comments={comments}
-          onAddComment={(content) => {
-            const comment: Comment = {
-              id: Date.now().toString(),
-              author: "Bạn",
-              content: content,
-              timestamp: "vừa xong",
-              likes: 0,
-              isLiked: false,
-            };
-            setComments([...comments, comment]);
-            onAddComment?.(content);
-          }}
+          onAddComment={(content) => {}}
           onCommentLike={handleCommentLike}
         />
       )}
