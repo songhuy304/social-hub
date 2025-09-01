@@ -15,3 +15,5 @@ export * from "./user-dropdown/";
 export * from "./avatar";
 export * from "./dropdown-menu";
 export * from "./card";
+export * from "./badge";
+export * from "./textarea";

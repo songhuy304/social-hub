@@ -1,22 +1,20 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
-
 import { GATEWAY_URL } from "@/shared/constants";
 import { fetchAuthBaseQuery } from "./common";
 import { PageableRequest, PageableResponse } from "@/shared/types/pageable";
-import { Post } from "@/shared/types";
+import { Comment } from "@/shared/types";
 
-const QUERIES_NAME = "posts";
+const QUERIES_NAME = "comments";
 
-export const postApi = createApi({
-  reducerPath: "postApi",
-
+export const commentApi = createApi({
+  reducerPath: "commentApi",
   baseQuery: fetchAuthBaseQuery(`${GATEWAY_URL}`),
   tagTypes: [QUERIES_NAME],
 
   endpoints: (builder) => ({
-    getPosts: builder.query<PageableResponse<Post>, PageableRequest>({
-      query: (params) => ({
-        url: `/posts`,
+    getCommentsByPost: builder.query<PageableResponse<Comment>, PageableRequest & { postId: number }>({
+      query: ({ postId, ...params }) => ({
+        url: `/comments/post/${postId}`,
         method: "GET",
         params,
       }),
@@ -25,16 +23,7 @@ export const postApi = createApi({
       transformResponse: (response: unknown) =>
         new PageableResponse(response, QUERIES_NAME),
     }),
-
-    getPostById: builder.query<Post, number>({
-      query: (id) => ({
-        url: `/posts/${id}`,
-        method: "GET",
-      }),
-      keepUnusedDataFor: 0,
-      providesTags: [QUERIES_NAME],
-    }),
   }),
 });
 
-export const { useGetPostsQuery, useGetPostByIdQuery } = postApi;
+export const { useGetCommentsByPostQuery } = commentApi;

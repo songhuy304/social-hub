@@ -4,7 +4,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { Geist, Geist_Mono } from "next/font/google";
 
-import { ReduxProvider, Toaster } from "@/components";
+import { Provider as QueryProvider, Toaster } from "@/components";
 import { routing } from "@/i18n/routing";
 import { APP_URL } from "@/shared/constants";
 import { Metadata } from "next";
@@ -44,12 +44,12 @@ export default async function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ReduxProvider>
+        <QueryProvider>
           <NextIntlClientProvider messages={messages} locale={locale}>
             {children}
             <Toaster />
           </NextIntlClientProvider>
-        </ReduxProvider>
+        </QueryProvider>
       </body>
     </html>
   );

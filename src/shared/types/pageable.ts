@@ -1,6 +1,6 @@
 export interface PageableRequest {
-  page: number;
-  size: number;
+  limit: number;
+  skip: number;
   filter?: string;
   [key: string]: any;
 }
@@ -14,8 +14,8 @@ export class PageableResponse<T> {
   constructor(response: any, key: string) {
     this.data = response[key] ?? [];
     this.totalItems = response.total ?? 0;
-    this.page = Math.floor((response.skip ?? 0) / (response.limit ?? 1)) + 1;
-    this.size = response.limit ?? 10;
+    this.page = response.page ?? 1;
+    this.size = response.size ?? 10;
   }
 
   getData(): T[] {
@@ -33,9 +33,17 @@ export class PageableResponse<T> {
   getSize(): number {
     return this.size;
   }
+
+  getCurrentPage(): number {
+    return this.page;
+  }
+
+  getTotalPages(): number {
+    return Math.ceil(this.totalItems / this.size);
+  }
 }
 
 export interface Pagination {
-  page: number;
-  size: number;
+  limit: number;
+  skip: number;
 }
