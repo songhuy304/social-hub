@@ -1,20 +1,21 @@
-import {
-  CommunitiesBlock,
-  ListPost,
-  PremiumCard,
-  WelcomeCard,
-} from "@/components/blocks";
+"use client";
+import { ListPost, PremiumCard, WelcomeCard } from "@/components/blocks";
+import { FilterSidebar } from "@/components/feature";
+import { useFilter } from "@/shared/hooks";
+import { FilterFormData } from "@/shared/schemas";
+import { useState } from "react";
 
 const HomePage = () => {
-  // const { data: posts } = useGetPostsQuery({ limit: 10, skip: 0 });
+  const [filters, setFilters] = useState<FilterFormData>({} as FilterFormData);
+
   return (
     <div className="container grid grid-cols-[1fr_550px_1fr] gap-x-6 xl:gap-x-12 py-6">
       <div className="space-y-6">
-        <CommunitiesBlock />
+        <FilterSidebar filters={filters} setFilters={setFilters} />
       </div>
 
       <div className="space-y-6">
-        <ListPost />
+        <ListPost filters={filters} />
       </div>
 
       <div className="space-y-6">

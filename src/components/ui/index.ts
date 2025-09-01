@@ -17,3 +17,6 @@ export * from "./dropdown-menu";
 export * from "./card";
 export * from "./badge";
 export * from "./textarea";
+export * from "./checkbox";
+export * from "./radio-group";
+export * from "./switch";
