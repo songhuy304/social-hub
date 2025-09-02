@@ -2,3 +2,4 @@ export * from "./useWindowSize";
 export * from "./useSearchBox";
 export * from "./queries";
 export * from "./useFilter";
+export * from "./useProtectedRoute";

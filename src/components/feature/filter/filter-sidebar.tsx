@@ -100,33 +100,6 @@ export const FilterSidebar = ({
       </div>
 
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-        <FilterSection title="Content type" icon={<Pen className="h-4 w-4" />}>
-          <div className="space-y-2">
-            {["post", "article", "series"].map((type) => (
-              <div key={type} className="flex items-center space-x-2">
-                <Checkbox
-                  id={type}
-                  checked={form.watch("contentTypes").includes(type as any)}
-                  onCheckedChange={(checked) => {
-                    const current = form.watch("contentTypes");
-                    if (checked) {
-                      form.setValue("contentTypes", [...current, type as any]);
-                    } else {
-                      form.setValue(
-                        "contentTypes",
-                        current.filter((t) => t !== type)
-                      );
-                    }
-                  }}
-                />
-                <Label htmlFor={type} className="text-sm capitalize">
-                  {type}
-                </Label>
-              </div>
-            ))}
-          </div>
-        </FilterSection>
-
         <FilterSection title="Tags" icon={<Tag className="h-4 w-4" />}>
           <div className="space-y-2">
             <Input placeholder="Search a tag" {...form.register("tags")} />

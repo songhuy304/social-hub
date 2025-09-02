@@ -7,10 +7,6 @@ const COMMENT_ENDPOINTS = {
 };
 
 export const apiComments = {
-  /**
-   * @param params
-   * @returns
-   */
   getByPost: async (
     params: PageableRequest & { postId: number }
   ): Promise<PageableResponse<Comment>> => {

@@ -2,6 +2,7 @@ export interface PageableRequest {
   limit: number;
   skip: number;
   filter?: string;
+  q?: string;
   [key: string]: any;
 }
 

@@ -5,3 +5,4 @@ export const sharedReducers = {
 };
 
 export * from "./states";
+export * from "./store";

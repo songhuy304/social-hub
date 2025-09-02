@@ -1,7 +1,7 @@
 "use client";
 import { ListPost, PremiumCard, WelcomeCard } from "@/components/blocks";
 import { FilterSidebar } from "@/components/feature";
-import { useFilter } from "@/shared/hooks";
+import { useFilter, withProtectedRoute } from "@/shared/hooks";
 import { FilterFormData } from "@/shared/schemas";
 import { useState } from "react";
 
@@ -26,4 +26,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default withProtectedRoute(HomePage);

@@ -1,7 +1,6 @@
 import axios, { AxiosInstance, AxiosResponse } from "axios";
 import { GATEWAY_URL } from "@/shared/constants";
 
-// Create axios instance
 const api: AxiosInstance = axios.create({
   baseURL: GATEWAY_URL,
   timeout: 10000,
@@ -10,7 +9,6 @@ const api: AxiosInstance = axios.create({
   },
 });
 
-// Request interceptor for adding auth token
 api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem("token");
@@ -24,14 +22,12 @@ api.interceptors.request.use(
   }
 );
 
-// Response interceptor for handling errors
 api.interceptors.response.use(
   (response: AxiosResponse) => {
     return response;
   },
   (error) => {
     if (error.response?.status === 401 || error.response?.status === 403) {
-      // Handle unauthorized/forbidden - clear token and redirect to login
       localStorage.removeItem("token");
       window.location.href = "/login";
     }
